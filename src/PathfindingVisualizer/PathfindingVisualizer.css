@@ -1,0 +1,14 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+  
+.full-screen-div {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

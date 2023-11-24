@@ -1,0 +1,10 @@
+.node {
+    width: 100%;
+    height: 100%;
+    border: 1px #AEB1B5 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}

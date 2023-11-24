@@ -1,0 +1,25 @@
+.container {
+    height: 110px;
+    width: 100vw;
+}
+
+.top-nav {
+    justify-content: space-between;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    color: #E7EEF6;
+    background-color: #2E4053;
+}
+
+.options-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    padding:15px 10vw;
+}
+
+.title {
+    font-size: 20px;
+}
