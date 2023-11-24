@@ -51,7 +51,7 @@ function Table() {
             for (let j = 0; j < tmp_nodes[0].length; j++) {
                 let node = tmp_nodes[i][j]
 
-                if (node.class === 'visited' || node.class == 'path') {
+                if (node.class === 'visited' || node.class === 'path') {
                     node.class = 'empty'
                 }
             }
@@ -67,11 +67,11 @@ function Table() {
         setCurrentIndex(0)
         clear('')
 
-        let visited_nodes = null
+        let visited_nodes = null 
 
         switch (algorithm_option) {
             case "djikstra":
-                visited_nodes = (Djikstras(nodes, grid_options.start_point, grid_options.end_point))
+                visited_nodes = Djikstras(nodes, grid_options.start_point, grid_options.end_point)
                 break
             case "astar":
                 visited_nodes = (AStar(nodes, grid_options.start_point, grid_options.end_point))
@@ -81,16 +81,17 @@ function Table() {
                 break
         }
         if (visited_nodes) {
-            setVisited((visited_nodes))
             setPath(getNodesInShortestPathOrder(visited_nodes[visited_nodes.length - 1]))
-            console.log(path)
+            //remove the end node from rendering
+            visited_nodes.pop()
+            setVisited((visited_nodes))
         }
     }
 
     const next = () => {
 
         if (visited.length === 0) return
-        setCurrentIndex((prevIndex) => prevIndex >= visited.length ? visited.length : prevIndex + 1);
+        setCurrentIndex((prevIndex) => prevIndex >= visited.length-1 ? visited.length : prevIndex + 1);
         display('visited')
 
         if (currentIndex === visited.length) {
@@ -105,7 +106,7 @@ function Table() {
         setCurrentIndex((prevIndex) =>
             prevIndex <= 0 ? 0 : prevIndex - 1
         );
-        if (currentIndex <= visited.length) {
+        if (currentIndex <= visited.length-1) {
             displayPath(path, 'visited')
         }
         display('empty')

@@ -31,9 +31,9 @@ export function Djikstras(nodes, start_node_initial, end_node_initial) {
         if (closest_node.wall) continue
 
         if (closest_node.distance === Infinity) return visited_nodes_in_order
-
+        
         closest_node.visited = true
-        if(closest_node.class !== 'end' && closest_node.class !== 'start')
+        if(closest_node.class !== 'start')
             visited_nodes_in_order.push(closest_node)
 
         if (closest_node.row === end_node_initial.row && closest_node.col === end_node_initial.col) {
@@ -77,15 +77,20 @@ function getAllNodes(grid) {
 }
 
 export function getNodesInShortestPathOrder(finishNode) {
-    const nodesInShortestPathOrder = [];
+
+    const nodesInShortestPathOrder = [];    
     let currentNode = finishNode;
     while (currentNode !== null && currentNode.class !== 'start') {
         nodesInShortestPathOrder.unshift(currentNode);
         currentNode = currentNode.previousNode;
     }
 
-    if(nodesInShortestPathOrder[0].class !== 'end') {
-        return []
+    let len = nodesInShortestPathOrder.length -1;
+
+    if(nodesInShortestPathOrder[len].class !== 'end') {        
+        return
+    } else {
+        nodesInShortestPathOrder.pop()
     }
 
     return nodesInShortestPathOrder;
